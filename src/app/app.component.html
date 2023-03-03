@@ -1,0 +1,38 @@
+<hello name="{{ name }}"></hello>
+<div class="container">
+  <form [formGroup]="userForm">
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">First Name</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="fname" name="firstname" formControlName="firstname" >
+        <div class="not-valid" *ngIf="userForm.get('firstname').hasError('required') && userForm.get('firstname').touched">Feild is required</div>
+        <div class="not-valid" *ngIf="userForm.get('firstname').hasError('minlength') && userForm.get('firstname').touched">Minimum of {{userForm.get('firstname')?.errors?.minlength?.requiredLength}} charecters required</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="lname">Last Name</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="lname" name="lastname" formControlName="lastname">
+          <div class="not-valid" *ngIf="userForm.get('lastname').hasError('required') && userForm.get('lastname').touched">Feild is required</div>
+          <div class="not-valid" *ngIf="userForm.get('lastname').hasError('minlength') && userForm.get('lastname').touched">Minimum of {{userForm.get('lastname')?.errors?.minlength?.requiredLength}} charecters required</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="email">Email</label>
+      </div>
+      <div class="col-75">
+        <input email type="text" id="email" name="email" formControlName="email">
+        <div class="not-valid" *ngIf="userForm.get('email').hasError('required') && userForm.get('email').touched
+        && !userForm.get('email').valid">Feild is required</div>
+      </div>
+    </div>
+    <div class="row">
+      <button type="submit" (click)="onSubmit()">Submit</button>
+    </div>
+  </form>
+</div>
