@@ -36,8 +36,8 @@ button[type=submit] {
   margin-top: 10px;
 }
 
-button[type=submit]:hover {
-  background-color: #45a049;
+button:disabled {
+  background-color: grey;
 }
 
 .container {

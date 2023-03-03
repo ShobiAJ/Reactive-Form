@@ -32,7 +32,7 @@
       </div>
     </div>
     <div class="row">
-      <button type="submit" (click)="onSubmit()">Submit</button>
+      <button type="submit" [disabled]="!userForm.valid" (click)="onSubmit()">Submit</button>
     </div>
   </form>
 </div>
