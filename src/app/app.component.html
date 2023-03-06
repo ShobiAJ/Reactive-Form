@@ -40,7 +40,7 @@
   </form>
 </div>
 
-
+<h2>In Progress Table </h2>
 <table class="table" *ngIf="formTable.length > 0">
   <thead>
     <tr>
@@ -57,6 +57,26 @@
       <td>{{ arr.email }}</td>
       <td><button type="submit" (click)="onDelete(i)">Delete</button></td>
       <td><button type="submit" (click)="onEdit(arr,i)">Edit</button></td>
+      <td><button type="submit" (click)="onDone(arr, i)">Done</button></td>      
+    </tr>
+  </tbody>
+</table>
+
+<table class="table" *ngIf="completedTable.length > 0">
+  <thead>
+    <tr>
+      <th scope="col">FirstName</th>
+      <th scope="col">LastName</th>
+      <th scope="col">Email</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let arr of completedTable; let i = index">
+      <td>{{ arr.fname }}</td>
+      <td>{{ arr.lname }}</td>
+      <td>{{ arr.email }}</td>
+      <td><button type="submit" (click)="onDeleteCompletedItems(i)">Delete</button></td>      
     </tr>
   </tbody>
 </table>

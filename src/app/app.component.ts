@@ -9,8 +9,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class AppComponent {
   name = 'Reactive Forms';
   formTable: any = [];
+  completedTable: any = [];
   updateEdit: any;
   enableEdit: boolean = false;
+  isCompleted: boolean = false;
 
   constructor(private _fb: FormBuilder) {}
 
@@ -32,7 +34,7 @@ export class AppComponent {
     };
     this.formTable.push(formDetails);
     this.userForm.reset();
-    alert('Form saved successfully')
+    // alert('Form saved successfully')
   }
 
   onEdit(items, index) {
@@ -44,8 +46,10 @@ export class AppComponent {
   }
 
   onUpdate() {
-    this.formTable[this.updateEdit].firstName = this.userForm.controls.firstname.value;
-    this.formTable[this.updateEdit].lastName =  this.userForm.controls.lastname.value;
+    this.formTable[this.updateEdit].firstName =
+      this.userForm.controls.firstname.value;
+    this.formTable[this.updateEdit].lastName =
+      this.userForm.controls.lastname.value;
     this.formTable[this.updateEdit].email = this.userForm.controls.email.value;
     this.userForm.reset();
     this.enableEdit = false;
@@ -55,5 +59,19 @@ export class AppComponent {
     this.formTable.splice(i, 1);
     this.userForm.reset();
     this.enableEdit = false;
+  }
+
+  onDone(item, i) {
+    let completedItems = {
+      fname: item.firstName,
+      lname: item.lastName,
+      email: item.email,
+    };
+    this.completedTable.push(completedItems);
+    this.onDelete(i);
+  }
+
+  onDeleteCompletedItems(i) {
+    this.completedTable.splice(i, 1);
   }
 }
